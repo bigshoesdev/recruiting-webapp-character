@@ -1,2 +1,13 @@
 # recruiting-webapp-character
-react typescript
+
+React coding test
+
+# Run the application
+
+```
+npm i
+```
+
+```
+npm start
+```
