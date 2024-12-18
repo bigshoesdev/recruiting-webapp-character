@@ -6,7 +6,7 @@ export type Attributes = {
   Wisdom: number;
   Charisma: number;
 };
-  
+
 export type Class = "Barbarian" | "Wizard" | "Bard";
 
 export type Skill = {
@@ -20,4 +20,3 @@ export interface Character {
   attributes: Attributes;
   skills: Record<string, number>;
 }
-  

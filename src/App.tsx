@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';  
-import CharacterManager from './components/CharacterManager';
+import React from "react";
+import "./App.css";
+import CharacterManager from "./components/CharacterManager";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +13,6 @@ const App: React.FC = () => {
       </section>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { calculateModifier } from '../utils/utils';
+import React, { useState } from "react";
+import { calculateModifier } from "../utils/utils";
 
 type SkillCheckProps = {
   skills: any;
@@ -7,10 +7,14 @@ type SkillCheckProps = {
   onRoll: (result: string) => void;
 };
 
-const SkillCheck: React.FC<SkillCheckProps> = ({ skills, attributes, onRoll }) => {
-  const [selectedSkill, setSelectedSkill] = useState<string>('Acrobatics');
+const SkillCheck: React.FC<SkillCheckProps> = ({
+  skills,
+  attributes,
+  onRoll,
+}) => {
+  const [selectedSkill, setSelectedSkill] = useState<string>("Acrobatics");
   const [dc, setDc] = useState<number>(20);
-  const [result, setResult] = useState<string>('?');
+  const [result, setResult] = useState<string>("?");
 
   const handleRoll = () => {
     const skillPoints = skills[selectedSkill]?.points || 0;
@@ -18,7 +22,7 @@ const SkillCheck: React.FC<SkillCheckProps> = ({ skills, attributes, onRoll }) =
     const modifier = calculateModifier(attributeValue);
 
     if (isNaN(skillPoints) || isNaN(modifier)) {
-      setResult('Invalid skill or attribute data.');
+      setResult("Invalid skill or attribute data.");
       return;
     }
 
@@ -27,7 +31,9 @@ const SkillCheck: React.FC<SkillCheckProps> = ({ skills, attributes, onRoll }) =
     const total = skillValue + roll;
     const isSuccess = total >= dc;
 
-    const rollResult = `Roll: ${roll}, Total: ${total} - ${isSuccess ? 'Success' : 'Failure'}`;
+    const rollResult = `Roll: ${roll}, Total: ${total} - ${
+      isSuccess ? "Success" : "Failure"
+    }`;
     setResult(rollResult);
     onRoll(rollResult);
   };
@@ -37,7 +43,10 @@ const SkillCheck: React.FC<SkillCheckProps> = ({ skills, attributes, onRoll }) =
       <h3>Skill Check</h3>
       <label>
         Select Skill:
-        <select value={selectedSkill} onChange={(e) => setSelectedSkill(e.target.value)}>
+        <select
+          value={selectedSkill}
+          onChange={(e) => setSelectedSkill(e.target.value)}
+        >
           {Object.keys(skills).map((skillName) => (
             <option key={skillName} value={skillName}>
               {skillName}

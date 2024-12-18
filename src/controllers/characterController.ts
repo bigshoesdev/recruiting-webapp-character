@@ -34,9 +34,7 @@ export const useCharacterController = () => {
 
   const handleSkillPointChange = (skillName: string, delta: number) => {
     if (checkMaxPointReached() && delta === 1) {
-      alert(
-        "You need more skill points! Upgrade intelligence to get more."
-      );
+      alert("You need more skill points! Upgrade intelligence to get more.");
       return;
     }
     setSkills((prevSkills) => {
