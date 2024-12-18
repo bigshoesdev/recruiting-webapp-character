@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
-import CharacterSheet from './CharacterSheet';
-import { Character } from '../types/types';
+import React, { useState } from "react";
+import CharacterSheet from "./CharacterSheet";
+import { Character } from "../types/types";
+import { DEFAULT_ATTRIBUTE } from "../consts/consts";
 
 const CharacterManager: React.FC = () => {
-  const [characters, setCharacters] = useState<Character[]>([]); 
+  const [characters, setCharacters] = useState<Character[]>([]);
 
   const handleAddCharacter = () => {
     const newCharacter: Character = {
       name: `Character ${characters.length + 1}`,
-      class: 'Barbarian', 
-      attributes: {
-        Strength: 10,
-        Dexterity: 10,
-        Constitution: 10,
-        Intelligence: 10,
-        Wisdom: 10,
-        Charisma: 10,
-      },
+      class: "Barbarian",
+      attributes: { ...DEFAULT_ATTRIBUTE },
       skills: {},
     };
     setCharacters([...characters, newCharacter]);
@@ -27,9 +21,7 @@ const CharacterManager: React.FC = () => {
       <button onClick={handleAddCharacter}>Add Character</button>
       <div>
         {characters.map((character, index) => (
-          <CharacterSheet
-            character={character}
-          />
+          <CharacterSheet character={character} />
         ))}
       </div>
     </div>
