@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import { calculateModifier } from "../utils/utils";
 
 type SkillCheckProps = {
   skills: any;
-  attributes: any;
   onRoll: (result: string) => void;
 };
 
 const SkillCheck: React.FC<SkillCheckProps> = ({
   skills,
-  attributes,
   onRoll,
 }) => {
   const [selectedSkill, setSelectedSkill] = useState<string>("Acrobatics");
@@ -18,9 +15,7 @@ const SkillCheck: React.FC<SkillCheckProps> = ({
 
   const handleRoll = () => {
     const skillPoints = skills[selectedSkill]?.points || 0;
-    const attributeValue = attributes[selectedSkill] || 0;
-    const modifier = calculateModifier(attributeValue);
-
+    const modifier = skills[selectedSkill].modifier;
     if (isNaN(skillPoints) || isNaN(modifier)) {
       setResult("Invalid skill or attribute data.");
       return;

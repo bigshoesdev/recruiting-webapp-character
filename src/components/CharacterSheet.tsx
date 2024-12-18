@@ -39,7 +39,6 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character }) => {
         <div className="character-skill">
           <SkillCheck
             skills={skills}
-            attributes={attributes}
             onRoll={(result) => console.log("Skill Check Result:", result)}
           />
         </div>

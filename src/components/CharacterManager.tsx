@@ -21,7 +21,7 @@ const CharacterManager: React.FC = () => {
       <button onClick={handleAddCharacter}>Add Character</button>
       <div>
         {characters.map((character, index) => (
-          <CharacterSheet character={character} />
+          <CharacterSheet key={index} character={character} />
         ))}
       </div>
     </div>
