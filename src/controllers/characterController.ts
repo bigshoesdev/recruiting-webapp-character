@@ -24,7 +24,21 @@ export const useCharacterController = () => {
     attributes["Intelligence"]
   );
 
+  const checkMaxPointReached = () => {
+    const totalPoints = Object.values(skills).reduce(
+      (total, skill) => total + skill.points,
+      0
+    );
+    return totalPoints >= availableSkillPoints;
+  };
+
   const handleSkillPointChange = (skillName: string, delta: number) => {
+    if (checkMaxPointReached() && delta === 1) {
+      alert(
+        "You need more skill points! Upgrade intelligence to get more."
+      );
+      return;
+    }
     setSkills((prevSkills) => {
       const updatedSkills = { ...prevSkills };
       updatedSkills[skillName].points = Math.max(

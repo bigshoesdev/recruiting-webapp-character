@@ -24,21 +24,20 @@ const SkillSection: React.FC<SkillSectionProps> = ({
         const totalSkillValue = skills[skill.name]?.points + modifier; 
         return (
           <div key={skill.name} className="skill">
-            <label>{skill.name}:</label>
+            <label>{skill.name} - points: </label>
             <span>{skills[skill.name]?.points}</span>
-            <span>(modifier: {skill.attributeModifier}): {modifier} </span>
             <button
               onClick={() => handleSkillPointChange(skill.name, 1)} 
-              disabled={skills[skill.name]?.points >= availableSkillPoints}
-            >
+              >
               +
             </button>
             <button
               onClick={() => handleSkillPointChange(skill.name, -1)} 
               disabled={skills[skill.name]?.points <= 0}
-            >
+              >
               -
             </button>
+            <span> modifier({skill.attributeModifier}): {modifier} </span>
             <span>total: {totalSkillValue}</span>
           </div>
         );
